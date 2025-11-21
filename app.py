@@ -5,8 +5,9 @@ from datetime import datetime
 from werkzeug.utils import secure_filename
 from functools import wraps
 
-app = Flask(**name**)
+app = Flask(__name__)
 app.secret_key = "supersecretkey"
+
 
 # ------------------ إعدادات المسؤول ------------------
 
@@ -243,3 +244,4 @@ return render_template('works.html', works_list=works_list)
 
 if **name** == "**main**":
 app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
