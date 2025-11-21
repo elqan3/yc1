@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+
+    <h2 class="mb-4 text-center">إدارة المنتسبين</h2>
+
+    <!-- جدول طلبات الانتساب -->
+    <h4 class="mb-3">طلبات الانتساب</h4>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>الاسم الثلاثي</th>
+                <th>العمر</th>
+                <th>الجنس</th>
+                <th>المدينة</th>
+                <th>الهاتف / واتساب</th>
+                <th>سبب الانتساب</th>
+                <th>الإجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in applicants %}
+            <tr {% if a.status == 'rejected' %} style="background-color: #ccc; color:#555;" {% endif %}>
+    <td>{{ a.full_name }}</td>
+    <td>{{ a.age }}</td>
+    <td>{{ a.gender }}</td>
+    <td>{{ a.city }}</td>
+    <td>{{ a.phone }}</td>
+    <td>{{ a.reason }}</td>
+    <td>
+        <a href="{{ url_for('accept_applicant', applicant_id=a.id) }}" 
+           class="btn btn-success btn-sm action-btn"
+           {% if a.status != 'pending' %} disabled style="pointer-events: none; opacity: 0.6;" {% endif %}>
+           قبول
+        </a>
+        <a href="{{ url_for('reject_applicant', applicant_id=a.id) }}" 
+           class="btn btn-danger btn-sm action-btn"
+           {% if a.status != 'pending' %} disabled style="pointer-events: none; opacity: 0.6;" {% endif %}>
+           رفض
+        </a>
+    </td>
+</tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- جدول المنتسبين المقبولين -->
+    <h4 class="mt-5 mb-3">المنتسبون المقبولون</h4>
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>الاسم الثلاثي</th>
+                <th>العمر</th>
+                <th>الجنس</th>
+                <th>المدينة</th>
+                <th>الهاتف / واتساب</th>
+                <th>سبب الانتساب</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in members %}
+            <tr>
+                <td>{{ m.full_name }}</td>
+                <td>{{ m.age }}</td>
+                <td>{{ m.gender }}</td>
+                <td>{{ m.city }}</td>
+                <td>{{ m.phone }}</td>
+                <td>{{ m.reason }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+<style>
+    .action-btn {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .action-btn:hover:not([disabled]) {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+</style>
+{% endblock %}

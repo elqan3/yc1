@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+
+    <h2 class="mb-4">مرحبًا، {{ admin_name }}</h2>
+
+    <div class="d-flex gap-3">
+        <a href="{{ url_for('admin_news') }}" class="btn btn-primary">الأخبار</a>
+        <a href="{{ url_for('admin_members') }}" class="btn btn-primary">المنتسبين</a>
+        <a href="{{ url_for('admin_works') }}" class="btn btn-primary">أعمالنا / إنجازاتنا</a>
+    </div>
+
+</div>
+{% endblock %}

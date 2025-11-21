@@ -1,0 +1,60 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>أعمالنا السابقة</h2>
+    <!-- زر إضافة عمل سابق -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addWorkModal">
+        إضافة عمل سابق
+    </button>
+</div>
+
+<div class="row">
+    {% for work in works_list %}
+    <div class="col-md-4">
+        <div class="work-card">
+            <h5>{{ work.title }}</h5>
+            <p>{{ work.description }}</p>
+            {% if work.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/works/' ~ work.image_filename) }}" alt="{{ work.title }}">
+            {% endif %}
+            <div class="d-flex justify-content-center mt-2">
+                <a href="{{ url_for('delete_work', work_id=work.id) }}" class="btn btn-danger btn-sm">حذف</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- نافذة منبثقة لإضافة عمل -->
+<div class="modal fade" id="addWorkModal" tabindex="-1" aria-labelledby="addWorkModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form action="{{ url_for('add_work') }}" method="POST" enctype="multipart/form-data">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addWorkModalLabel">إضافة عمل سابق</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+                <label for="title" class="form-label">عنوان العمل</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">وصف العمل</label>
+                <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">صورة العمل (اختياري)</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إلغاء</button>
+            <button type="submit" class="btn btn-primary">نشر العمل</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,396 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Navbar حديث جداً -->
+<nav class="navbar navbar-expand-lg custom-nav">
+    <div class="container">
+
+        <!-- اللوجو والاسم -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" 
+                 class="logo-img" alt="logo">
+            <span class="brand-text">المجلس المحلي للشباب – ترهونة</span>
+        </a>
+
+        <!-- زر الموبايل -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="toggler-icon"></span>
+        </button>
+
+        <!-- الروابط -->
+        <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+            <ul class="navbar-nav align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link modern-link" href="#about">من نحن</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link modern-link" href="#news">الأخبار</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link modern-link" href="#membership">انتسب</a>
+                </li>
+
+                <!-- زر رئيسي -->
+                <li class="nav-item ms-3">
+                    <a href="#works" class="main-btn">أعمالنا</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<style>
+/* الخلفية */
+.custom-nav {
+    background: #DAA520;
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* اللوجو */
+.logo-img {
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+/* نص الشعار */
+.brand-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #111;
+    font-family: "Cairo", sans-serif;
+}
+
+/* الروابط */
+.modern-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px 18px;
+    color: #333 !important;
+    position: relative;
+    transition: 0.3s;
+    font-family: "Cairo", sans-serif;
+}
+
+/* خط هوفر أسفل الرابط */
+.modern-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 0%;
+    height: 2.5px;
+    background: #0078FF;
+    transition: 0.3s;
+    transform: translateX(-50%);
+}
+
+.modern-link:hover::after {
+    width: 60%;
+}
+
+.modern-link:hover {
+    color: #0078FF !important;
+}
+
+/* زر أعمالنا */
+.main-btn {
+    padding: 9px 26px;
+    border-radius: 30px;
+    background: #0078FF;
+    color: #fff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.main-btn:hover {
+    background: #005FCC;
+    transform: translateY(-2px);
+}
+
+/* زر الموبايل */
+.navbar-toggler .toggler-icon {
+    width: 28px;
+    height: 3px;
+    background: #0078FF;
+    display: block;
+    position: relative;
+    border-radius: 10px;
+}
+
+.navbar-toggler .toggler-icon::before,
+.navbar-toggler .toggler-icon::after {
+    content: "";
+    width: 28px;
+    height: 3px;
+    background: #0078FF;
+    position: absolute;
+    left: 0;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.navbar-toggler .toggler-icon::before {
+    top: -8px;
+}
+
+.navbar-toggler .toggler-icon::after {
+    top: 8px;
+}
+</style>
+
+
+
+<!-- Hero Section -->
+<section class="py-5 text-center" style="background-color:#ffffe6;">
+    <div class="container">
+
+        <!-- الشعار الكبير -->
+        <img src="{{ url_for('static', filename='images/logo1.png') }}" 
+             alt="شعار المجلس" 
+             style="width:250px; margin-bottom:20px;">
+
+        <!-- العنوان -->
+        <h1 class="fw-bold mb-3" style="color:#DAA520;">المجلس المحلي للشباب – ترهونة</h1>
+
+        <!-- الجملة الترحيبية -->
+        <p class="lead text-muted mb-4">
+            نعمل من أجل شباب مدينتنا… القلب النابض لطموحات الشباب في ترهونة
+        </p>
+
+        <!-- الأزرار -->
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="#news" class="btn btn-outline-secondary px-4 py-2">
+                آخر الأخبار
+            </a>
+
+            <a href="#membership" class="btn px-4 py-2" style="background-color:#DAA520; color:white; border:none;">
+                انتسب للمجلس
+            </a>
+        </div>
+
+    </div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-5" style="background-color:#E6F0FA;">
+    <div class="container text-center">
+
+        <h2 class="fw-bold mb-5" style="color:#DAA520;">من نحن</h2>
+        <p class="lead text-muted mb-5">
+            المجلس المحلي للشباب ترهونة هو منصة تهدف إلى تمكين الشباب،  
+            تعزيز المبادرات، وتنظيم الأنشطة التي تخدم شباب مدينتنا.  
+            نعمل على دعم الإبداع والمشاركة الفعالة في تطوير المجتمع المحلي.
+        </p>
+
+        <div class="row g-4">
+            <!-- بطاقة رؤيتنا -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color:#b59f6b;">رؤيتنا</h5>
+                        <p class="card-text text-muted">تمكين الشباب ليكونوا قادة المستقبل في ترهونة.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بطاقة رسالتنا -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color:#b59f6b;">رسالتنا</h5>
+                        <p class="card-text text-muted">توفير منصة لتطوير قدرات الشباب وتنمية مهاراتهم.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بطاقة أهدافنا -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold" style="color:#b59f6b;">أهدافنا</h5>
+                        <p class="card-text text-muted">تنظيم الأنشطة، دعم المشاريع، وتشجيع التطوع والمبادرات.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- Works Section -->
+<section id="works" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">أعمالنا السابقة</h2>
+
+        <div id="worksCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+
+                {% for work in works_list %}
+                <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                    <div class="card mx-auto" style="max-width: 600px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ work.title }}</h5>
+                            <p class="card-text">{{ work.description }}</p>
+                        </div>
+                        {% if work.image_filename %}
+                        <img src="{{ url_for('static', filename='uploads/works/' ~ work.image_filename) }}"
+                             class="card-img-bottom" alt="{{ work.title }}">
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            <!-- أزرار الانتقال -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#worksCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">السابق</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#worksCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">التالي</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section id="news" class="py-5" style="background-color:#fdfdfd;">
+    <div class="container">
+
+        <h2 class="fw-bold mb-5 text-center" style="color:#DAA520;">آخر الأخبار</h2>
+
+        {% for news_item in news_list %}
+        <div class="card mb-4 shadow-sm mx-auto" style="max-width: 700px;">
+            <div class="card-body">
+                <h4 class="card-title fw-bold" style="color:#1E90FF;">{{ news_item.title }}</h4>
+                <p class="card-text text-muted" style="font-size: 1rem;">
+                    {{ news_item.content }}
+                </p>
+            </div>
+            {% if news_item.image_filename %}
+            <img src="{{ url_for('static', filename='uploads/news/' + news_item.image_filename) }}" 
+                 class="card-img-bottom img-fluid" alt="{{ news_item.title }}">
+            {% else %}
+            <img src="{{ url_for('static', filename='images/default-news.jpg') }}" 
+                 class="card-img-bottom img-fluid" alt="خبر بدون صورة">
+            {% endif %}
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<!-- members Section -->
+<section id="membership" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-2" style="color:#DAA520;">انتسب للمجلس</h2>
+        <p class="text-center text-muted mb-4" style="font-size: 1.1rem;">
+            كن أحد منتسبي المجلس وشارك معنا في أنشطتنا وبرامجنا، وكن جزءًا من مجتمع ضخم يضم كل شباب ترهونة
+        </p>
+
+        <form action="{{ url_for('submit_application') }}" method="POST" class="mx-auto p-4 bg-white rounded shadow" style="max-width: 600px;">
+            <!-- الاسم الثلاثي -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="الاسم الثلاثي" required>
+            </div>
+
+            <!-- العمر -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-calendar-fill"></i></span>
+                <input type="number" class="form-control" id="age" name="age" placeholder="العمر" required>
+            </div>
+
+            <!-- الجنس -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-gender-trans"></i></span>
+                <select class="form-select" id="gender" name="gender" required>
+                    <option value="">اختر الجنس</option>
+                    <option value="ذكر">ذكر</option>
+                    <option value="أنثى">أنثى</option>
+                </select>
+            </div>
+
+            <!-- المدينة -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                <input type="text" class="form-control" id="city" name="city" placeholder="المدينة" required>
+            </div>
+
+            <!-- الهاتف / واتساب -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="رقم الهاتف / واتساب" required>
+            </div>
+
+            <!-- سبب الانتساب -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class="bi bi-pencil-fill"></i></span>
+                <textarea class="form-control" id="reason" name="reason" rows="4" placeholder="سبب الانتساب" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" style="background-color:#DAA520;">إرسال الطلب</button>
+        </form>
+    </div>
+</section>
+
+<!-- أيقونات Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- عن المجلس -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">مجلس شباب ترهونة</h5>
+                <p>ملتزمون بتمكين الشباب والمجتمع المحلي من خلال الأنشطة والبرامج المميزة. كن جزءًا من مجتمعنا وشاركنا المستقبل.</p>
+            </div>
+
+            <!-- روابط سريعة -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">روابط سريعة</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#about" class="text-white text-decoration-none">من نحن</a></li>
+                    <li><a href="#news" class="text-white text-decoration-none">الأخبار</a></li>
+                    <li><a href="#works" class="text-white text-decoration-none">أعمالنا</a></li>
+                    <li><a href="#join" class="text-white text-decoration-none">انتسب</a></li>
+                </ul>
+            </div>
+
+            <!-- تواصل معنا -->
+            <div class="col-md-4 mb-4">
+                <h5 class="fw-bold">تواصل معنا</h5>
+                <p>📧 البريد: info@youthcouncil.ly</p>
+                <p>📞 الهاتف: +218 91 234 5678</p>
+                <p>🌐 تابعنا على:</p>
+                <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white me-2"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+            </div>
+
+        </div>
+
+        <hr class="border-light">
+
+        <div class="text-center">
+            &copy; 2025 مجلس شباب ترهونة. جميع الحقوق محفوظة.
+        </div>
+
+    </div>
+</footer>
+
+{% endblock %}

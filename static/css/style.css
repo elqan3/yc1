@@ -1,0 +1,52 @@
+/* تأثير hover على أزرار الهيدر */
+
+
+
+/* تأثير hover على البطاقات */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff; /* خلفية البطاقات أبيض */
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* نفس تأثير hover لقسم من نحن */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #1E90FF; /* لون الخلفية */
+    border-radius: 50%; /* لجعلها دائرية */
+    width: 40px;  /* حجم الزر */
+    height: 40px;
+    background-size: 100%, 100%; /* لتملأ المساحة */
+    background-image: none; /* إزالة SVG الافتراضي */
+}
+
+/* نضيف أيقونة سهم بسيطة باستخدام CSS */
+.carousel-control-prev-icon::after {
+    content: '❮';
+    color: white;
+    font-size: 25px;
+}
+.carousel-control-next-icon::after {
+    content: '❯';
+    color: white;
+    font-size: 25px;
+}
